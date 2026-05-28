@@ -12,12 +12,12 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 
 class FloatingBubbleService : Service() {
-    private val CHANNEL_ID = "FloatingBubbleChannel"
+    private val channelId = "FloatingBubbleChannel"
 
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
-        val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
+        val notification: Notification = NotificationCompat.Builder(this, channelId)
             .setContentTitle("Floating Bubble Active")
             .setContentText("Service is running")
             .setSmallIcon(android.R.drawable.ic_menu_info_details)
@@ -35,7 +35,7 @@ class FloatingBubbleService : Service() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val serviceChannel = NotificationChannel(
-                CHANNEL_ID,
+                channelId,
                 "Floating Bubble Service Channel",
                 NotificationManager.IMPORTANCE_DEFAULT
             )
